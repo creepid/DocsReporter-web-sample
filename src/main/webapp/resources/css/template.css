@@ -1,0 +1,26 @@
+.header, .footer {
+    padding:3px;
+    background-color: LightSlateGray;
+    border: DarkGray 1px solid;
+    clear: both;
+}
+
+.content {
+    height: 200px;
+    width: 960px;
+}
+
+.menu {
+    padding:6px;
+    width: 19%;
+    height: 100%;
+    border: DarkGray 1px solid;
+    background-color: LightBlue;
+    float: left;
+}
+
+.contentBody {
+    padding:6px;
+    width: 78%;
+    float:left; 
+}

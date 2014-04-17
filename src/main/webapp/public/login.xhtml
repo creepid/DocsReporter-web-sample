@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" template="/base_template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:ice="http://www.icesoft.com/icefaces/component"
+        >
+
+    <ui:define name="container">
+
+        <ice:form id='form_login'>
+
+            <ice:panelGroup id='panel_login' style="margin: 130px 0px 0px 100px; width:800px">
+                <ice:messages id='messages' errorClass="message-error" infoClass="message-info"/>
+
+                <ice:outputText value="#{msg['loginscreen.loginmessage']}" style="margin-bottom: 30px"/>
+                <ice:panelGrid columns="3" cellpadding="2">
+
+                    <ice:outputText value="#{msg['loginscreen.loginfield']} "/>
+                    <ice:inputText required="true" id='input_user' value="#{loginBean.username}"
+                                   requiredMessage="#{msg['loginscreen.please_enter_user_name']}"/>
+                    <ice:message for="input_user" id="message_input_user"/>
+                    <ice:outputText value="#{msg['loginscreen.passfield']} "/>
+                    <ice:inputSecret required="true" id='input_password'
+                                     requiredMessage="#{msg['loginscreen.please_enter_password']}"
+                                     value="#{loginBean.password}"/>
+                    <ice:message for="input_password"/>
+
+                    <ice:commandButton id='submit_login' action="#{loginBean.login}"
+                                       value="#{msg['loginscreen.loginbutton']}"/>
+                </ice:panelGrid>
+            </ice:panelGroup>
+        </ice:form>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,171 @@
+<ui:composition template="/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ice="http://www.icesoft.com/icefaces/component"
+                xmlns:ace="http://www.icefaces.org/icefaces/components">
+
+    <ui:define name="content">
+
+        <ice:form id='form_home'>
+
+            <ice:menuBar id="menuBar">
+                <!-- File menu -->
+                <ice:menuItem value="File"
+                              id="file">
+                    <ice:menuItem id="open"
+                                  value="Open"
+                                  onclick="sampleDialog.show();"/>
+                    <ice:menuItem id="close"
+                                  value="Close"/>
+                    <ice:menuItem id="recent"
+                                  value="Recent">
+                        <ice:menuItem id="file1"
+                                      value="File 1"/>
+                        <ice:menuItem id="file2"
+                                      value="File 2">
+                            <ice:menuItem id="para1"
+                                          value="Para 1"/>
+                            <ice:menuItem id="para2"
+                                          value="Para 2"/>
+                            <ice:menuItem id="para3"
+                                          value="Para 3"/>
+                        </ice:menuItem>
+                        <ice:menuItem value="File 3"
+                                      id="file3"/>
+                        <ice:menuItem value="File 4"
+                                      id="file4"/>
+                    </ice:menuItem>
+                    <ice:menuItemSeparator/>
+                    <ice:menuItem id="save"
+                                  value="Save"/>
+                    <ice:menuItem id="print"
+                                  value="Print"/>
+                </ice:menuItem>
+
+                <!-- Edit menu -->
+                <ice:menuItem value="Edit"
+                              id="edit">
+                    <ice:menuItem id="cut"
+                                  value="Cut"/>
+                    <ice:menuItem id="copy"
+                                  value="Copy"/>
+                    <ice:menuItem id="paste"
+                                  value="Paste"/>
+                </ice:menuItem>
+
+                <!-- View menu -->
+                <ice:menuItem value="View"
+                              id="view">
+                    <ice:menuItem id="zoom_in"
+                                  value="Zoom In"/>
+                    <ice:menuItem id="zoom_out"
+                                  value="Zoom Out"/>
+                    <ice:menuItem id="fit_in_window"
+                                  value="Fit In Window"/>
+                    <ice:menuItem id="actual_size"
+                                  value="Actual Size"/>
+                </ice:menuItem>
+
+                <!-- Help Menu -->
+                <ice:menuItem value="Help"
+                              id="help" onclick="return false;">
+                    <ice:menuItem id="docs"
+                                  value="Documentation"
+                                  link="http://www.icefaces.org/main/resources/documentation.iface"
+                                  target="_blank"/>
+                </ice:menuItem>
+
+            </ice:menuBar>
+            <br/>
+            <br/>
+
+            <ice:outputConnectionStatus id="connectStat"
+                                        style="float:right"
+                                        styleClass="navConnectionStatus"
+                                        showPopupOnDisconnect="true"/>
+
+            <ice:panelGroup>
+                <h:outputText value="#{msg['logged_in_as']}"/>
+                <strong>
+                    <h:outputText value="#{loginBean.username}"/>
+                </strong>
+                [<ice:commandLink id='link_logout' value="#{msg['logout']}" actionListener="#{logoutConfirmDialog.show}"/>]
+            </ice:panelGroup>
+
+            <ice:panelGroup>
+                <ice:commandButton id='hello_button' value="Hello?" actionListener="#{helloBean.hello}"/>
+                <ice:outputText id='message' value="#{helloBean.message}"/>
+            </ice:panelGroup>
+
+            <ice:panelPopup id="dialog_logout_confirm"
+                            draggable="false" modal="true"
+                            title="#{msg['confirm.logout.title']}"
+                            visible="#{logoutConfirmDialog.visible}"
+                            autoCentre="true">
+
+                <f:facet name="header">
+                    <ice:panelGroup styleClass="popupHeaderWrapper">
+                        <ice:outputText
+                            value="#{msg['confirm.logout.title']}"
+                            styleClass="popupHeaderText"/>
+                    </ice:panelGroup>
+                </f:facet>
+                <f:facet name="body">
+                    <ice:panelGroup styleClass="popupBody">
+                        <ice:outputText value="#{msg['confirm.logout.text']}"/>
+                        <br/>
+                        <ice:commandButton id="button_confirm" type="submit"
+                                           value="OK"
+                                           action="#{logoutConfirmDialog.confirm}"/>
+
+                        <ice:commandButton id="button_cancel" type="submit"
+                                           actionListener="#{logoutConfirmDialog.cancel}"
+                                           value="Cancel"/>
+                    </ice:panelGroup>
+                </f:facet>
+            </ice:panelPopup>
+
+        </ice:form>
+
+        <ace:dialog id="dialog"
+                    header="A sample dialog overview example"
+                    widgetVar="sampleDialog"
+                    closable="false"
+                    modal="true"
+                    draggable="false"
+                    showEffect="clip"
+                    hideEffect="fade"
+                    width="400">
+
+            <h:form id="inputForm">
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel id="firstNameLabel" for="firstNameInputField" value="First Name:"/>
+                    <h:inputText id="firstNameInputField" value="#{dialogBean.firstName}" />
+
+                    <h:outputLabel id="lastNameLabel" for="lastNameInputField" value="Last Name:"/>
+                    <h:inputText id="lastNameInputField" value="#{dialogBean.lastName}"/>
+                </h:panelGrid>
+
+                <h:panelGrid width="100%" style="text-align: center;">
+                    <h:commandButton id="submit" value="Click me once done with input" onclick="sampleDialog.hide();"/>
+                </h:panelGrid>
+            </h:form>
+
+        </ace:dialog>
+
+        <br/>
+        <br/>
+
+        <h:form id="outputForm">
+            <h:panelGrid id="outputPanel" columns="2">
+                <h:outputLabel value="Entered text: " for="enteredName"/>
+                <h:outputText id="enteredName" value="#{dialogBean.firstName} #{dialogBean.lastName}"/>
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

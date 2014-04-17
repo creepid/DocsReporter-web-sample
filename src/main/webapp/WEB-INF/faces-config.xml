@@ -1,0 +1,55 @@
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+    <application>
+    
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+        
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        
+        <message-bundle>by.creepid.icefaces.webapp.i18n.resources</message-bundle>
+        
+        <resource-bundle>
+            <base-name>by.creepid.icefaces.webapp.i18n.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+
+    </application>
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/invalidate.jsp</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/public/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/secure/home.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/public/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <lifecycle>
+        <!--<phase-listener>by.creepid.docgeneration.view.lifecycle.RedirectListener</phase-listener>-->
+        <!--<phase-listener>by.creepid.docgeneration.view.lifecycle.MultiPageMessagesSupport</phase-listener>-->
+    </lifecycle>
+
+    <factory>
+        <exception-handler-factory>
+        		by.creepid.docgeneration.view.lifecycle.LoggingExceptionHandlerFactory
+        </exception-handler-factory>
+    </factory>
+    
+</faces-config>

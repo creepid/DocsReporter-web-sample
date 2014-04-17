@@ -42,7 +42,23 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	
+	<category name="com.jcraft.jsch.SSH">
+        <priority value="WARN"/>
+    </category>
 
+    <category name="org.springframework">
+        <priority value="WARN"/>
+    </category>
+
+    <category name="org.springframework.security">
+        <priority value="INFO"/>
+    </category>
+
+    <category name="org.apache.cxf">
+        <priority value="ALL"/>
+    </category>
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />

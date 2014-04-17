@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ace="http://www.icefaces.org/icefaces/components">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:param name="title" value="Applicant System" />
+
+	<ui:define name="header">
+		<h:graphicImage library="images" name="icefaces.png" />
+	</ui:define>
+
+	<ui:define name="menu">
+		<h:button outcome="applicants" value="Listing Page" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:messages globalOnly="true" />
+		<h:panelGroup id="table" layout="block">
+			<table>
+				<tr>
+					<td><h:outputLabel for="title" value="#{msgs.title}" /></td>
+					<td><h:selectOneRadio id="title" required="true"
+							value="#{jobApplicant.title}">
+							<f:selectItem itemLabel="Web" itemValue="1" />
+							<f:selectItem itemLabel="Offline" itemValue="2" />
+							
+							
+							
+						</h:selectOneRadio></td>
+					<td><h:message for="title" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="firstName" value="#{msgs.firstName}" />
+					</td>
+					<td><h:inputText id="firstName"
+							value="#{jobApplicant.firstName}" required="true">
+							<f:converter converterId="wordCapitalization" />
+						</h:inputText></td>
+					<td><h:message for="firstName" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="lastName" value="#{msgs.lastName}" />
+					</td>
+					<td><h:inputText id="lastName"
+							value="#{jobApplicant.lastName}" required="true">
+							<f:converter converterId="wordCapitalization" />
+						</h:inputText></td>
+					<td><h:message for="lastName" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="email" value="#{msgs.email}" /></td>
+					<td><h:inputText id="email" value="#{jobApplicant.email}"
+							required="true">
+							<f:validator validatorId="emailValidator" />
+						</h:inputText></td>
+					<td><h:message for="email" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="email" value="#{msgs.email}" /></td>
+					<td><h:inputText id="email" value="#{jobApplicant.email}"
+							required="true">
+							<f:validator validatorId="emailValidator" />
+						</h:inputText></td>
+					<td><h:message for="email" /></td>
+				</tr>
+				<tr>
+					<td><h:commandButton
+							action="#{applicantController.addApplicant}"
+							value="#{msgs.submitApplicant}" /></td>
+					<td><h:commandButton id="clearButton" value="Clear">
+							<f:ajax event="click" render="@form"
+								listener="#{applicantController.clearForm}" immediate="true" />
+						</h:commandButton></td>
+					<td><h:commandButton id="cancelButton"
+							action="cancelJobApplicant" immediate="true" value="Cancel" /></td>
+				</tr>
+			</table>
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>
+</html>

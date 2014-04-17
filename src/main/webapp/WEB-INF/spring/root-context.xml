@@ -6,6 +6,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<import resource="classpath:docs-context.xml" />
 	<import resource="classpath:db-context.xml" />
+	<import resource="classpath:beans-security.xml"/>
+	<import resource="classpath:beans-webapp.xml"/>
 
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
