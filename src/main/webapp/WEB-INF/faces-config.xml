@@ -18,6 +18,21 @@
         </resource-bundle>
 
     </application>
+    
+    
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>reg</from-outcome>
+            <to-view-id>/public/registration.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/public/login.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 
     <navigation-rule>
         <from-view-id>*</from-view-id>
@@ -48,8 +63,14 @@
 
     <factory>
         <exception-handler-factory>
-        		by.creepid.docgeneration.view.lifecycle.LoggingExceptionHandlerFactory
+            by.creepid.docgeneration.view.lifecycle.LoggingExceptionHandlerFactory
         </exception-handler-factory>
     </factory>
+    
+    
+    <converter>
+        <converter-id>connectionTypeConverter</converter-id>
+        <converter-class>by.creepid.docgeneration.view.converter.ConnectionTypeConverter</converter-class>
+    </converter>
     
 </faces-config>

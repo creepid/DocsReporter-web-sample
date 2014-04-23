@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -7,23 +7,44 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>FF Management GUI</title>
-    <link rel="stylesheet" type="text/css" href="/xmlhttp/css/rime/rime.css"/>
-    <h:outputStylesheet library="css" name="layout.css" target="head"/>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title><ui:insert name ="windowTitle"/></title>
+        <link rel="stylesheet" type="text/css" href="/xmlhttp/css/rime/rime.css"/>
+        <h:outputStylesheet library="css" name="styles.css"/>
+    </h:head>
 
-</h:head>
 
+    <h:body styleClass="ice-skin-rime">
 
-<h:body styleClass="ice-skin-rime">
+        <f:view>
+            
+            <div id="heading">
+                <ui:insert name="heading">
+                    <ui:include src="/header.xhtml"/>
+                </ui:insert>   
+            </div>
 
-    <f:view>
-        <div id="container">
-            <ui:insert name="container"/>
-        </div>
-    </f:view>
+            <div id="sidebarLeft">
+                <ui:insert name="sideBarLeft">
+                    <ui:include src="/sidebarLeft.xhtml"/>
+                </ui:insert>
+            </div>   
 
-</h:body>
+            <div id="content">
+                <ui:insert name="container"/>
+            </div>
+
+            <div id="footer_cleaner"></div>
+
+            <div id="footer">
+                <ui:insert name="footer">
+                    <ui:include src="/footer.xhtml"/>
+                </ui:insert>   
+            </div>
+            
+        </f:view>
+
+    </h:body>
 
 </html>

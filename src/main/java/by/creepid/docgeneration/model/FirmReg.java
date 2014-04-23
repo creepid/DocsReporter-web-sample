@@ -15,11 +15,15 @@ import by.creepid.docgeneration.validation.GtinCheck;
 import by.creepid.docsreporter.context.annotations.Image;
 import by.creepid.docsreporter.context.annotations.TextStyling;
 import fr.opensagres.xdocreport.core.document.SyntaxKind;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
+@ManagedBean(name = "reg")
+@RequestScoped
 public class FirmReg implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Image(bookmarks = {"offline"}, width = 40)
     private byte[] offlineChoice;
     @Image(bookmarks = {"web"}, width = 40)
@@ -31,72 +35,72 @@ public class FirmReg implements Serializable {
     private String gln;
     @NotEmpty
     @Size(max = 255)
-    private String companyname; 
+    private String companyname;
     @Size(max = 255)
-    private String lawtype; 
+    private String lawtype;
     @NotEmpty
     @Size(max = 255)
-    private String structural_affiliation; 
+    private String structural_affiliation;
     @NotEmpty
     @Size(max = 255)
-    private String headorg; 
+    private String headorg;
     @NotEmpty
     @Size(max = 255)
-    private String headorg_whereby_act; 
-    private String employees_number; 
+    private String headorg_whereby_act;
+    private String employees_number;
 
     @Image(bookmarks = {"logo"}, width = 200)
     private byte[] logo_file;
     @NotEmpty
     @Size(max = 2000)
-    private String description_activity; 
+    private String description_activity;
     @Size(max = 255)
-	@Pattern(regexp = "(^$)|(^((https?|ftp)://|(www|ftp|)\\.|(^))[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$)")
+    @Pattern(regexp = "(^$)|(^((https?|ftp)://|(www|ftp|)\\.|(^))[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$)")
     @TextStyling(syntaxKind = SyntaxKind.Html, syntaxWithDirective = true)
-    private String web_address; 
+    private String web_address;
     @Size(max = 255)
-    private String postcode; 
+    private String postcode;
     @NotNull
     @Min(0)
-    private Long region; 
+    private Long region;
     private String regionStr;
     @Size(max = 255)
-    private String locality; 
+    private String locality;
     @Min(0)
-    private Long street_type; 
+    private Long street_type;
     private String street_typeStr;
     @Size(max = 255)
-    private String street; 
-    private String house_number; 
-    private String corps_number; 
-    private String office_number; 
+    private String street;
+    private String house_number;
+    private String corps_number;
+    private String office_number;
     @NotEmpty
     @Size(max = 255)
-    private String service_bank; 
+    private String service_bank;
     @NotEmpty
     @Size(max = 255)
-    private String service_bank_address; 
+    private String service_bank_address;
     @NotNull
-    private String current_account; 
+    private String current_account;
     @NotNull
-    private String bank_code; 
+    private String bank_code;
     @NotNull
     private String unp;
 
     @NotEmpty
     @Size(max = 255)
-    private String contact_name; 
+    private String contact_name;
     @NotEmpty
     @Size(max = 255)
-    private String contact_position; 
+    private String contact_position;
     @NotEmpty
     @Size(max = 255)
-    private String contact_phone; 
+    private String contact_phone;
     @NotEmpty
     @Size(max = 255)
     @Pattern(regexp = "[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})")
     @TextStyling(syntaxKind = SyntaxKind.Html, syntaxWithDirective = true)
-    private String contact_email; 
+    private String contact_email;
 
     public ConnectionType getType_connection() {
         return type_connection;
@@ -361,5 +365,4 @@ public class FirmReg implements Serializable {
     public void setOfflineChoice(byte[] offlineChoice) {
         this.offlineChoice = offlineChoice;
     }
-
 }

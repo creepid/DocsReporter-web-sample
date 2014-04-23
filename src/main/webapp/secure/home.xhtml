@@ -1,4 +1,4 @@
-<ui:composition template="/template.xhtml"
+<ui:composition template="/base_template.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -8,80 +8,9 @@
                 xmlns:ice="http://www.icesoft.com/icefaces/component"
                 xmlns:ace="http://www.icefaces.org/icefaces/components">
 
-    <ui:define name="content">
+    <ui:define name="container">
 
         <ice:form id='form_home'>
-
-            <ice:menuBar id="menuBar">
-                <!-- File menu -->
-                <ice:menuItem value="File"
-                              id="file">
-                    <ice:menuItem id="open"
-                                  value="Open"
-                                  onclick="sampleDialog.show();"/>
-                    <ice:menuItem id="close"
-                                  value="Close"/>
-                    <ice:menuItem id="recent"
-                                  value="Recent">
-                        <ice:menuItem id="file1"
-                                      value="File 1"/>
-                        <ice:menuItem id="file2"
-                                      value="File 2">
-                            <ice:menuItem id="para1"
-                                          value="Para 1"/>
-                            <ice:menuItem id="para2"
-                                          value="Para 2"/>
-                            <ice:menuItem id="para3"
-                                          value="Para 3"/>
-                        </ice:menuItem>
-                        <ice:menuItem value="File 3"
-                                      id="file3"/>
-                        <ice:menuItem value="File 4"
-                                      id="file4"/>
-                    </ice:menuItem>
-                    <ice:menuItemSeparator/>
-                    <ice:menuItem id="save"
-                                  value="Save"/>
-                    <ice:menuItem id="print"
-                                  value="Print"/>
-                </ice:menuItem>
-
-                <!-- Edit menu -->
-                <ice:menuItem value="Edit"
-                              id="edit">
-                    <ice:menuItem id="cut"
-                                  value="Cut"/>
-                    <ice:menuItem id="copy"
-                                  value="Copy"/>
-                    <ice:menuItem id="paste"
-                                  value="Paste"/>
-                </ice:menuItem>
-
-                <!-- View menu -->
-                <ice:menuItem value="View"
-                              id="view">
-                    <ice:menuItem id="zoom_in"
-                                  value="Zoom In"/>
-                    <ice:menuItem id="zoom_out"
-                                  value="Zoom Out"/>
-                    <ice:menuItem id="fit_in_window"
-                                  value="Fit In Window"/>
-                    <ice:menuItem id="actual_size"
-                                  value="Actual Size"/>
-                </ice:menuItem>
-
-                <!-- Help Menu -->
-                <ice:menuItem value="Help"
-                              id="help" onclick="return false;">
-                    <ice:menuItem id="docs"
-                                  value="Documentation"
-                                  link="http://www.icefaces.org/main/resources/documentation.iface"
-                                  target="_blank"/>
-                </ice:menuItem>
-
-            </ice:menuBar>
-            <br/>
-            <br/>
 
             <ice:outputConnectionStatus id="connectStat"
                                         style="float:right"

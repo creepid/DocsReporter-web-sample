@@ -1,0 +1,91 @@
+#heading {
+    padding: 20px;
+    height: 30px;
+    margin-bottom: 10px;
+    background: #dddddd;
+    border: 1px solid darkGray;
+}
+
+#footer {
+    width:99%;
+    height:18px;
+    position: absolute;
+    bottom:0;
+    left:10px;
+    margin-bottom: 10px;
+    background: #dddddd;
+    border: 1px solid darkGray;
+}
+
+#footer_cleaner {
+    height: 80px;
+    clear: both;
+}
+
+.footer {
+    font-size: 1.0em;
+    font-style: italic;
+    text-align: center;
+}
+
+#sidebarLeft {
+    border: thin solid lightGray;
+    padding: 5px;
+    width: 200px;
+    background: #eeeeee;
+}
+
+#content {
+    padding: 5px;
+    padding-bottom:18px;   /* Высота футера*/
+    border: thin solid lightGray;
+    background: #fefeef;
+    position: absolute;
+    right: 8px;
+    left: 230px;
+    height: auto;
+    top: 90px;
+}
+
+.header {
+    font-size: 1.4em;
+    font-style: italic;
+    font-family: Palatino;
+    text-align: center;
+}
+
+.projectImage {
+    padding: 5px;
+}
+
+.panelGridMenu {
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.panelGridLogin{
+    margin: 130px 0px 0px 100px; 
+    width:800px;
+}
+
+.outMessage{
+    margin-bottom: 30px;
+}
+
+.planetImageSelected {
+    padding: 5px;
+    text-align: center;
+    background: #fefeef;
+    border: thin solid lightGray;
+}
+
+.welcome {
+    font-style: italic;
+    font-family: Palatino;
+}
+
+.welcomeImage {
+    margin-top: 10px;
+    text-align: center;
+}
