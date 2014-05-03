@@ -3,23 +3,16 @@
     height: 30px;
     margin-bottom: 10px;
     background: #dddddd;
-    border: 1px solid darkGray;
+    border: thin solid darkGray;
 }
 
 #footer {
-    width:99%;
+    width:100%;
     height:18px;
-    position: absolute;
     bottom:0;
-    left:10px;
-    margin-bottom: 10px;
     background: #dddddd;
-    border: 1px solid darkGray;
-}
-
-#footer_cleaner {
-    height: 80px;
-    clear: both;
+    border: thin solid darkGray;
+    margin-top: 10px;
 }
 
 .footer {
@@ -33,6 +26,7 @@
     padding: 5px;
     width: 200px;
     background: #eeeeee;
+    float: left;
 }
 
 #content {
@@ -40,11 +34,8 @@
     padding-bottom:18px;   /* Высота футера*/
     border: thin solid lightGray;
     background: #fefeef;
-    position: absolute;
-    right: 8px;
-    left: 230px;
     height: auto;
-    top: 90px;
+    margin-left: 220px;
 }
 
 .header {
