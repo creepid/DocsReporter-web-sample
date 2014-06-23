@@ -3,7 +3,7 @@ DocsReporter-web-sample
 
 DocsReporter project web application using Spring MVC
 
-For development stage execute:
+<b>For development</b> stage execute:
 ```xml
 mvn install -Dmaven.test.skip=true -Pprod
 ```
@@ -13,7 +13,7 @@ mvn jetty:run-exploded
 ```
 
 
-For production:
+<b>For production</b>:
 ```xml
 mvn install -Dmaven.test.skip=true -Pprod
 ```
