@@ -216,10 +216,10 @@ public class RegDocControllerTest {
 		ReflectionTestUtils.setField(controller, "firmRegService", firmRegService);
 
 		try {
-			controller
-					.create(reg,
-							"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-							response, locale);
+//			controller
+//					.create(reg,
+//							"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+//							response, locale);
 
 			fail("No exception caught");
 		} catch (InvalidRequestException ex) {

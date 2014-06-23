@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ice="http://www.icesoft.com/icefaces/component">
     <head>
         <title>IGNORED</title>
@@ -11,17 +12,17 @@
     <body>
         <ui:composition>
 
-            <ice:panelGrid styleClass="panelGridMenu"> 
+            <ice:panelGrid styleClass="panelGridMenu">
 
-                <div class="projectImage">
-                    <h:graphicImage library="images" name="project_name.png"/>
-                </div>
+                        <div class="projectImage">
+                            <h:graphicImage library="images" name="project_name.png"/>
+                        </div>
 
                 <h:form>
-                    <ice:menuBar id="menuBar" orientation="Vertical">
-                        <ice:menuItem value="Login" id="login" action="login"/>
-                        <ice:menuItem value="Registration" id="reg" action="reg"/>
-                    </ice:menuBar>
+                        <ice:menuBar id="menuBar" orientation="Vertical">
+                            <ice:menuItem value="Login" id="login" action="login"/>
+                            <ice:menuItem value="Registration" id="reg" action="registration"/>
+                        </ice:menuBar>
                 </h:form>
 
             </ice:panelGrid>

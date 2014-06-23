@@ -1,4 +1,4 @@
-package by.creepid.docgeneration.view.lifecycle;
+package by.creepid.docgeneration.view.faces.lifecycle;
 
 import org.icefaces.application.SessionExpiredException;
 
@@ -25,7 +25,7 @@ public class LoggingExceptionHandler extends ExceptionHandlerWrapper {
 	private final static Logger logger = LoggerFactory
 			.getLogger(LoggingExceptionHandler.class);
 
-	private final static String REDIRECT_URL = "/faces/secure/home.xhtml";
+	private final static String REDIRECT_URL = "/faces/index.jsp";
 
 	private ExceptionHandler wrapped;
 

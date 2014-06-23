@@ -13,29 +13,36 @@
 
         <ice:form id='form_login'>			
 
-            <ice:panelGroup id='panel_login' styleClass="panelGridLogin">
+            <ice:panelCollapsible id="linkPanel" expanded="true" >
                 
-                <ice:messages id='messages' errorClass="message-error" infoClass="message-info"/>
+                <f:facet name="header">
+                    <ice:panelGroup>
+                        <ice:outputText id="linkHeader"
+                                        value="Login"/>
+                    </ice:panelGroup>
+                </f:facet>
 
-                <ice:outputText value="#{msg['loginscreen.loginmessage']}" styleClass="outMessage"/>
-                
-                <ice:panelGrid columns="3" cellpadding="2">
+                    <ice:messages id='messages' errorClass="message-error" infoClass="message-info"/>
 
-                    <ice:outputText value="#{msg['loginscreen.loginfield']} "/>
-                    <ice:inputText required="true" id='input_user' value="#{loginBean.username}"
-                                   requiredMessage="#{msg['loginscreen.please_enter_user_name']}"/>                    
-                    <ice:message for="input_user" id="message_input_user"/>
-                    <ice:outputText value="#{msg['loginscreen.passfield']} "/>
-                    <ice:inputSecret required="true" id='input_password'
-                                     requiredMessage="#{msg['loginscreen.please_enter_password']}"
-                                     value="#{loginBean.password}"/>
-                    <ice:message for="input_password"/>
+                    <ice:outputText value="#{msg['loginscreen.loginmessage']}" styleClass="outMessage"/>
 
-                    <ice:commandButton id='submit_login' action="#{loginBean.login}"
-                                       value="#{msg['loginscreen.loginbutton']}"/>
-                </ice:panelGrid>
+                    <ice:panelGrid columns="3" cellpadding="2">
 
-            </ice:panelGroup>
+                        <ice:outputText value="#{msg['loginscreen.loginfield']} "/>
+                        <ice:inputText required="true" id='input_user' value="#{loginBean.username}"
+                                       requiredMessage="#{msg['loginscreen.please_enter_user_name']}"/>                    
+                        <ice:message for="input_user" id="message_input_user"/>
+                        <ice:outputText value="#{msg['loginscreen.passfield']} "/>
+                        <ice:inputSecret required="true" id='input_password'
+                                         requiredMessage="#{msg['loginscreen.please_enter_password']}"
+                                         value="#{loginBean.password}"/>
+                        <ice:message for="input_password"/>
+
+                        <ice:commandButton id='submit_login' action="#{loginBean.login}"
+                                           value="#{msg['loginscreen.loginbutton']}"/>
+                    </ice:panelGrid>
+
+            </ice:panelCollapsible>
         </ice:form>
     </ui:define>
 

@@ -13,147 +13,145 @@
 
     <ui:define name="container">
 
-        <ice:form id='form_reg'>
+        <ice:panelGroup id='panel_reg' styleClass="panelGridReg">
 
-            <ice:panelGroup id='panel_reg' styleClass="panelGridReg">
-                <ice:messages id='messages' errorClass="message-error" infoClass="message-info"/>
+            <h:form prependId="false">
+                <f:validateBean disabled="true">
 
+                    <h:messages />
+                    <!-- ICEfaces will automatically enable <f:ajax> on all standard JSF command components-->
+                    <f:ajax event="click" disabled="true" />
 
-                <ice:panelGrid columns="3" cellpadding="2">
+                    <ice:panelCollapsible id="linkPanel" expanded="true" >
 
-                    <ice:outputText value="#{msg['regscreen.connfield']} "/>
-                    <h:selectOneMenu id="connectionTypeSelect" value="#{reg.type_connection}">
-                        <f:selectItems value="#{connectionTypesContainer.values}" />
-                    </h:selectOneMenu>                 
-                    <ice:message for="connectionTypeSelect" id="message_connectionType_select"/>
+                        <f:facet name="header">
+                            <ice:panelGroup>
+                                <ice:outputText id="linkHeader"
+                                                value="Registration"/>
+                            </ice:panelGroup>
+                        </f:facet>
 
-                    <ice:outputText value="#{msg['regscreen.gln']} "/>
-                    <ice:inputText id='input_gln' value="#{reg.gln}"/>                 
-                    <ice:message for="input_gln" id="message_input_gln"/>
+                        <h:panelGrid columns="3" cellpadding="2">
 
-                    <ice:outputText value="#{msg['regscreen.companyname']} "/>
-                    <ice:inputText id='input_companyname' value="#{reg.companyname}"/>                 
-                    <ice:message for="input_companyname" id="message_input_companyname"/>
+                            <h:outputText value="#{msg['regscreen.connfield']}"/>
+                            <h:selectOneMenu id="type_connection" value="#{reg.type_connection}" >
+                                <f:selectItems value="#{connectionTypesContainer.values}" />
+                            </h:selectOneMenu>                 
+                            <h:message for="type_connection" id="message_connectionType_select"/>
 
-                    <ice:outputText value="#{msg['regscreen.lawtype']} "/>
-                    <ice:inputText id='input_lawtype' value="#{reg.lawtype}"/>                 
-                    <ice:message for="input_lawtype" id="message_input_lawtype"/>
+                            <h:outputText value="#{msg['regscreen.gln']}"/>
+                            <h:inputText id="gln" value="#{reg.gln}" />                 
+                            <h:message for="gln" id="message_input_gln"/>
 
-                    <ice:outputText value="#{msg['regscreen.structural_affiliation']} "/>
-                    <ice:inputText id='input_structural_affiliation' value="#{reg.structural_affiliation}"/>                 
-                    <ice:message for="input_structural_affiliation" id="message_input_structural_affiliation"/>
+                            <h:outputText value="#{msg['regscreen.companyname']} "/>
+                            <h:inputText id="companyname" value="#{reg.companyname}" />                 
+                            <h:message for="companyname" id="message_input_companyname"/>
 
-                    <ice:outputText value="#{msg['regscreen.headorg']} "/>
-                    <ice:inputText id='input_headorg' value="#{reg.headorg}"/>                 
-                    <ice:message for="input_headorg" id="message_input_headorg"/>
+                            <h:outputText value="#{msg['regscreen.lawtype']} "/>
+                            <h:inputText id="lawtype" value="#{reg.lawtype}"  />                 
+                            <h:message for="lawtype" id="message_input_lawtype"/>
 
-                    <ice:outputText value="#{msg['regscreen.headorg_whereby_act']} "/>
-                    <ice:inputText id='input_headorg_whereby_act' value="#{reg.headorg_whereby_act}"/>                 
-                    <ice:message for="input_headorg_whereby_act" id="message_input_headorg_whereby_act"/>
+                            <h:outputText value="#{msg['regscreen.structural_affiliation']} "/>
+                            <h:inputText id="structural_affiliation" value="#{reg.structural_affiliation}" />                 
+                            <h:message for="structural_affiliation" id="message_input_structural_affiliation"/>
 
-                    <ice:outputText value="#{msg['regscreen.employees_number']} "/>
-                    <ice:inputText id='input_employees_number' value="#{reg.employees_number}"/>                 
-                    <ice:message for="input_employees_number" id="message_input_employees_number"/>
+                            <h:outputText value="#{msg['regscreen.headorg']} "/>
+                            <h:inputText id="headorg" value="#{reg.headorg}" />                 
+                            <h:message for="headorg" id="message_input_headorg"/>
 
-                    <ice:outputText value="#{msg['regscreen.logo']} "/>
-                    <ace:fileEntry id="file-entry" 
-                                   relativePath="/files/"
-                                   maxFileCount="1" 
-                                   maxFileCountMessage="Limited to 10 files uploaded concurrantly." 
-                                   fileEntryListener="#{fileEntry.sampleListener}" 
-                                   maxFileSize="6291456" 
-                                   maxFileSizeMessage="Submitted file is too large." 
-                                   maxTotalSizeMessage="Total size of submitted files is too large." 
-                                   useOriginalFilename="true" 
-                                   useSessionSubdir="true"/> 
-                    
-                    <ice:message for="input_logo" id="message_input_logo"/>
+                            <h:outputText value="#{msg['regscreen.headorg_whereby_act']} "/>
+                            <h:inputText id="headorg_whereby_act" value="#{reg.headorg_whereby_act}" />                 
+                            <h:message for="headorg_whereby_act" id="message_input_headorg_whereby_act"/>
 
-                    <ice:outputText value="#{msg['regscreen.description_activity']} "/>
-                    <ice:inputText id='input_description_activity' value="#{reg.description_activity}"/>                 
-                    <ice:message for="input_description_activity" id="message_input_description_activity"/>
+                            <h:outputText value="#{msg['regscreen.employees_number']} "/>
+                            <h:inputText id="employees_number" value="#{reg.employees_number}" />                 
+                            <h:message for="employees_number" id="message_input_employees_number"/>
 
-                    <ice:outputText value="#{msg['regscreen.web_address']} "/>
-                    <ice:inputText id='input_web_address' value="#{reg.web_address}"/>                 
-                    <ice:message for="input_web_address" id="message_input_web_address"/>
+                            <h:outputText value="#{msg['regscreen.description_activity']} "/>
+                            <h:inputText id="description_activity" value="#{reg.description_activity}" />                 
+                            <h:message for="description_activity" id="message_input_description_activity"/>
 
-                    <ice:outputText value="#{msg['regscreen.postcode']} "/>
-                    <ice:inputText id='input_postcode' value="#{reg.postcode}"/>                 
-                    <ice:message for="input_postcode" id="message_input_postcode"/>
+                            <h:outputText value="#{msg['regscreen.web_address']} "/>
+                            <h:inputText id="web_address" value="#{reg.web_address}" />                 
+                            <h:message for="web_address" id="message_input_web_address"/>
 
-                    <ice:outputText value="#{msg['regscreen.region']} "/>
-                    <ice:inputText id='input_region' value="#{reg.region}"/>                 
-                    <ice:message for="input_region" id="message_input_region"/>
+                            <h:outputText value="#{msg['regscreen.postcode']} "/>
+                            <h:inputText id="postcode" value="#{reg.postcode}" />                 
+                            <h:message for="postcode" id="message_input_postcode"/>
 
-                    <ice:outputText value="#{msg['regscreen.locality']} "/>
-                    <ice:inputText id='input_locality' value="#{reg.locality}"/>                 
-                    <ice:message for="input_locality" id="message_input_locality"/>
+                            <h:outputText value="#{msg['regscreen.region']} "/>
+                            <h:inputText id="region" value="#{reg.region}" />                 
+                            <h:message for="region" id="message_input_region"/>
 
-                    <ice:outputText value="#{msg['regscreen.street_type']} "/>
-                    <ice:inputText id='input_street_type' value="#{reg.street_type}"/>                 
-                    <ice:message for="input_street_type" id="message_input_street_type"/>
+                            <h:outputText value="#{msg['regscreen.locality']} "/>
+                            <h:inputText id="locality" value="#{reg.locality}" />                 
+                            <h:message for="locality" id="message_input_locality"/>
 
-                    <ice:outputText value="#{msg['regscreen.street']} "/>
-                    <ice:inputText id='input_street' value="#{reg.street}"/>                 
-                    <ice:message for="input_street" id="message_input_street"/>
+                            <h:outputText value="#{msg['regscreen.street_type']} "/>
+                            <h:inputText id="street_type" value="#{reg.street_type}" />                 
+                            <h:message for="street_type" id="message_input_street_type"/>
 
-                    <ice:outputText value="#{msg['regscreen.house_number']} "/>
-                    <ice:inputText id='input_house_number' value="#{reg.house_number}"/>                 
-                    <ice:message for="input_house_number" id="message_input_house_number"/>
+                            <h:outputText value="#{msg['regscreen.street']} "/>
+                            <h:inputText id="street" value="#{reg.street}" />                 
+                            <h:message for="street" id="message_input_street"/>
 
-                    <ice:outputText value="#{msg['regscreen.corps_number']} "/>
-                    <ice:inputText id='input_corps_number' value="#{reg.corps_number}"/>                 
-                    <ice:message for="input_corps_number" id="message_input_corps_number"/>
+                            <h:outputText value="#{msg['regscreen.house_number']} "/>
+                            <h:inputText id="house_number" value="#{reg.house_number}" />                 
+                            <h:message for="house_number" id="message_input_house_number"/>
 
-                    <ice:outputText value="#{msg['regscreen.office_number']} "/>
-                    <ice:inputText id='input_office_number' value="#{reg.office_number}"/>                 
-                    <ice:message for="input_office_number" id="message_input_office_number"/>
+                            <h:outputText value="#{msg['regscreen.corps_number']} "/>
+                            <h:inputText id="corps_number" value="#{reg.corps_number}" />                 
+                            <h:message for="corps_number" id="message_input_corps_number"/>
 
-                    <ice:outputText value="#{msg['regscreen.service_bank']} "/>
-                    <ice:inputText id='input_service_bank' value="#{reg.service_bank}"/>                 
-                    <ice:message for="input_service_bank" id="message_input_service_bank"/>
+                            <h:outputText value="#{msg['regscreen.office_number']} "/>
+                            <h:inputText id="office_number" value="#{reg.office_number}" />                 
+                            <h:message for="office_number" id="message_input_office_number"/>
 
-                    <ice:outputText value="#{msg['regscreen.service_bank_address']} "/>
-                    <ice:inputText id='input_service_bank_address' value="#{reg.service_bank_address}"/>                 
-                    <ice:message for="input_service_bank_address" id="message_input_service_bank_address"/>
+                            <h:outputText value="#{msg['regscreen.service_bank']} "/>
+                            <h:inputText id="service_bank" value="#{reg.service_bank}" />                 
+                            <h:message for="service_bank" id="message_input_service_bank"/>
 
-                    <ice:outputText value="#{msg['regscreen.current_account']} "/>
-                    <ice:inputText id='input_current_account' value="#{reg.current_account}"/>                 
-                    <ice:message for="input_current_account" id="message_input_current_account"/>
+                            <h:outputText value="#{msg['regscreen.service_bank_address']} "/>
+                            <h:inputText id="service_bank_address" value="#{reg.service_bank_address}" />                 
+                            <h:message for="service_bank_address" id="message_input_service_bank_address"/>
 
-                    <ice:outputText value="#{msg['regscreen.bank_code']} "/>
-                    <ice:inputText id='input_bank_code' value="#{reg.bank_code}"/>                 
-                    <ice:message for="input_bank_code" id="message_input_bank_code"/>
+                            <h:outputText value="#{msg['regscreen.current_account']} "/>
+                            <h:inputText id="current_account" value="#{reg.current_account}" />                 
+                            <h:message for="current_account" id="message_input_current_account"/>
 
-                    <ice:outputText value="#{msg['regscreen.unp']} "/>
-                    <ice:inputText id='input_unp' value="#{reg.unp}"/>                 
-                    <ice:message for="input_unp" id="message_input_unp"/>
+                            <h:outputText value="#{msg['regscreen.bank_code']} "/>
+                            <h:inputText id="bank_code" value="#{reg.bank_code}" />                 
+                            <h:message for="bank_code" id="message_input_bank_code"/>
 
-                    <ice:outputText value="#{msg['regscreen.contact_name']} "/>
-                    <ice:inputText id='input_contact_name' value="#{reg.contact_name}"/>                 
-                    <ice:message for="input_contact_name" id="message_input_contact_name"/>
+                            <h:outputText value="#{msg['regscreen.unp']} "/>
+                            <h:inputText id="unp" value="#{reg.unp}" />                 
+                            <h:message for="unp" id="message_input_unp"/>
 
-                    <ice:outputText value="#{msg['regscreen.contact_position']} "/>
-                    <ice:inputText id='input_contact_position' value="#{reg.contact_position}"/>                 
-                    <ice:message for="input_contact_position" id="message_input_contact_position"/>
+                            <h:outputText value="#{msg['regscreen.contact_name']} "/>
+                            <h:inputText id="contact_name" value="#{reg.contact_name}" />                 
+                            <h:message for="contact_name" id="message_input_contact_name"/>
 
-                    <ice:outputText value="#{msg['regscreen.contact_phone']} "/>
-                    <ice:inputText id='input_contact_phone' value="#{reg.contact_phone}"/>                 
-                    <ice:message for="input_contact_phone" id="message_input_contact_phone"/>
+                            <h:outputText value="#{msg['regscreen.contact_position']} "/>
+                            <h:inputText id="contact_position" value="#{reg.contact_position}" />                 
+                            <h:message for="contact_position" id="message_input_contact_position"/>
 
-                    <ice:outputText value="#{msg['regscreen.contact_email']} "/>
-                    <ice:inputText id='input_contact_email' value="#{reg.contact_email}"/>                 
-                    <ice:message for="input_contact_email" id="message_input_contact_email"/>
+                            <h:outputText value="#{msg['regscreen.contact_phone']} "/>
+                            <h:inputText id="contact_phone" value="#{reg.contact_phone}" />                 
+                            <h:message for="contact_phone" id="message_input_contact_phone"/>
 
-                    <ice:commandButton id='submit_login' action="#{loginBean.login}"
-                                       value="#{msg['loginscreen.loginbutton']}"/>
-                </ice:panelGrid>
+                            <h:outputText value="#{msg['regscreen.contact_email']} "/>
+                            <h:inputText id="contact_email" value="#{reg.contact_email}" />
+                            <h:message for="contact_email" id="message_input_contact_email"/>
 
+                            <h:commandButton value="#{msg['regscreen.regbutton']}" action="create"/> 
 
-            </ice:panelGroup>
+                        </h:panelGrid>
 
+                    </ice:panelCollapsible>
+                </f:validateBean>
+            </h:form>
 
-        </ice:form>
+        </ice:panelGroup>
 
     </ui:define>
 

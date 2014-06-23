@@ -1,4 +1,4 @@
-package by.creepid.docgeneration.view.lifecycle;
+package by.creepid.docgeneration.view.faces.lifecycle;
 
 import javax.faces.context.ExceptionHandler;
 import javax.faces.context.ExceptionHandlerFactory;

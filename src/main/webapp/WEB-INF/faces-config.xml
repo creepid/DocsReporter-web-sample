@@ -5,6 +5,10 @@
     
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
         
+        <!--        <resource-handler>by.creepid.docgeneration.view.faces.CustomResourceHandler</resource-handler>
+        <view-handler>by.creepid.docgeneration.view.faces.CustomViewHandler</view-handler>
+        <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>-->
+        
         <locale-config>
             <default-locale>en</default-locale>
             <supported-locale>en</supported-locale>
@@ -16,14 +20,14 @@
             <base-name>by.creepid.icefaces.webapp.i18n.messages</base-name>
             <var>msg</var>
         </resource-bundle>
-
+        
     </application>
     
     
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
-            <from-outcome>reg</from-outcome>
+            <from-outcome>registration</from-outcome>
             <to-view-id>/public/registration.xhtml</to-view-id>
             <redirect/>
         </navigation-case>
@@ -55,22 +59,31 @@
             <to-view-id>/public/login.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/public/registration.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>create</from-outcome>
+            <to-view-id>/reg/</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
     <lifecycle>
-        <!--<phase-listener>by.creepid.docgeneration.view.lifecycle.RedirectListener</phase-listener>-->
-        <!--<phase-listener>by.creepid.docgeneration.view.lifecycle.MultiPageMessagesSupport</phase-listener>-->
+        <phase-listener>by.creepid.docgeneration.validation.ValidatorPhaseListener</phase-listener>
+        <!--        <phase-listener>by.creepid.docgeneration.view.faces.lifecycle.RedirectListener</phase-listener>-->
+<!--        <phase-listener>by.creepid.docgeneration.view.faces.lifecycle.MultiPageMessagesSupport</phase-listener>-->
     </lifecycle>
 
     <factory>
         <exception-handler-factory>
-            by.creepid.docgeneration.view.lifecycle.LoggingExceptionHandlerFactory
+            by.creepid.docgeneration.view.faces.lifecycle.LoggingExceptionHandlerFactory
         </exception-handler-factory>
     </factory>
     
     
     <converter>
         <converter-id>connectionTypeConverter</converter-id>
-        <converter-class>by.creepid.docgeneration.view.converter.ConnectionTypeConverter</converter-class>
+        <converter-class>by.creepid.docgeneration.view.converter.ConnectionTypeEnumConverter</converter-class>
     </converter>
     
 </faces-config>

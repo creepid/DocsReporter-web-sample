@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import by.creepid.docgeneration.fields.FieldsHelper;
 import by.creepid.docgeneration.validation.GtinCheck;
+import by.creepid.docgeneration.validation.Validatable;
 import by.creepid.docsreporter.context.annotations.Image;
 import by.creepid.docsreporter.context.annotations.TextStyling;
 import fr.opensagres.xdocreport.core.document.SyntaxKind;
@@ -20,10 +21,10 @@ import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name = "reg")
 @RequestScoped
-public class FirmReg implements Serializable {
+public class FirmReg implements Serializable, Validatable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Image(bookmarks = {"offline"}, width = 40)
     private byte[] offlineChoice;
     @Image(bookmarks = {"web"}, width = 40)

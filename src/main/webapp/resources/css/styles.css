@@ -30,9 +30,6 @@
 }
 
 #content {
-    padding: 5px;
-    padding-bottom:18px;   /* Высота футера*/
-    border: thin solid lightGray;
     background: #fefeef;
     height: auto;
     margin-left: 220px;

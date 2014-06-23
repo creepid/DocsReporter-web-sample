@@ -1,4 +1,4 @@
-package by.creepid.docgeneration.view.lifecycle;
+package by.creepid.docgeneration.view.faces.lifecycle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -10,35 +10,35 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+//see http://blogs.sourceallies.com/2010/03/rendering-global-tmessages-after-redirect/
+//see http://uaihebert.com/jsf-persisting-objects-and-messages-after-a-redirect/
 /**
  * Enables messages to be rendered on different pages from which they were set.
  *
- * After each phase where messages may be added, this moves the messages
- * from the page-scoped FacesContext to the session-scoped session map.
+ * After each phase where messages may be added, this moves the messages from
+ * the page-scoped FacesContext to the session-scoped session map.
  *
- * Before messages are rendered, this moves the messages from the
- * session-scoped session map back to the page-scoped FacesContext.
+ * Before messages are rendered, this moves the messages from the session-scoped
+ * session map back to the page-scoped FacesContext.
  *
- * Only global messages, not associated with a particular component, are
- * moved. Component messages cannot be rendered on pages other than the one on
- * which they were added.
+ * Only global messages, not associated with a particular component, are moved.
+ * Component messages cannot be rendered on pages other than the one on which
+ * they were added.
  *
- * To enable multi-page messages support, add a <code>lifecycle</code> block to your
- * faces-config.xml file. That block should contain a single
- * <code>phase-listener</code> block containing the fully-qualified classname
- * of this file.
+ * To enable multi-page messages support, add a <code>lifecycle</code> block to
+ * your faces-config.xml file. That block should contain a single
+ * <code>phase-listener</code> block containing the fully-qualified classname of
+ * this file.
  *
  * @author Jesse Wilson jesse[AT]odel.on.ca
  * @secondaryAuthor Lincoln Baxter III lincoln[AT]ocpsoft.com
  */
-public class MultiPageMessagesSupport implements PhaseListener
-{
+public class MultiPageMessagesSupport implements PhaseListener {
 
     private static final long serialVersionUID = 1250469273857785274L;
     private static final String sessionToken = "MULTI_PAGE_MESSAGES_SUPPORT";
 
-    public PhaseId getPhaseId()
-    {
+    public PhaseId getPhaseId() {
         return PhaseId.ANY_PHASE;
     }
 
@@ -47,16 +47,13 @@ public class MultiPageMessagesSupport implements PhaseListener
      * have arrived here and the response is already complete, then the page is
      * not going to show up: don't display messages yet.
      */
-    // TODO: Blog this (MultiPageMessagesSupport)
-    public void beforePhase(final PhaseEvent event)
-    {
+    public void beforePhase(final PhaseEvent event) {
+        System.out.println("BEFORE:" + event.getPhaseId().toString());
         FacesContext facesContext = event.getFacesContext();
         this.saveMessages(facesContext);
 
-        if (PhaseId.RENDER_RESPONSE.equals(event.getPhaseId()))
-        {
-            if (!facesContext.getResponseComplete())
-            {
+        if (PhaseId.RENDER_RESPONSE.equals(event.getPhaseId())) {
+            if (!facesContext.getResponseComplete()) {
                 this.restoreMessages(facesContext);
             }
         }
@@ -65,57 +62,51 @@ public class MultiPageMessagesSupport implements PhaseListener
     /*
      * Save messages into the session after every phase.
      */
-    public void afterPhase(final PhaseEvent event)
-    {
-        if (!PhaseId.RENDER_RESPONSE.equals(event.getPhaseId()))
-        {
+    public void afterPhase(final PhaseEvent event) {
+        System.out.println("AFTER:" + event.getPhaseId().toString());
+        if (!PhaseId.RENDER_RESPONSE.equals(event.getPhaseId())) {
             FacesContext facesContext = event.getFacesContext();
             this.saveMessages(facesContext);
         }
     }
 
     @SuppressWarnings("unchecked")
-    private int saveMessages(final FacesContext facesContext)
-    {
+    private int saveMessages(final FacesContext facesContext) {
         List<FacesMessage> messages = new ArrayList<FacesMessage>();
-        for (Iterator<FacesMessage> iter = facesContext.getMessages(null); iter.hasNext();)
-        {
-            messages.add(iter.next());
+        for (Iterator<FacesMessage> iter = facesContext.getMessages(null); iter.hasNext();) {
+            FacesMessage message = iter.next();
+            System.out.println("SAVING:" + message.getSummary());
+            messages.add(message);
             iter.remove();
         }
 
-        if (messages.size() == 0)
-        {
+        if (messages.size() == 0) {
             return 0;
         }
 
         Map<String, Object> sessionMap = facesContext.getExternalContext().getSessionMap();
         List<FacesMessage> existingMessages = (List<FacesMessage>) sessionMap.get(sessionToken);
-        if (existingMessages != null)
-        {
+        if (existingMessages != null) {
             existingMessages.addAll(messages);
-        }
-        else
-        {
+        } else {
             sessionMap.put(sessionToken, messages);
         }
         return messages.size();
     }
 
     @SuppressWarnings("unchecked")
-    private int restoreMessages(final FacesContext facesContext)
-    {
+    private int restoreMessages(final FacesContext facesContext) {
         Map<String, Object> sessionMap = facesContext.getExternalContext().getSessionMap();
         List<FacesMessage> messages = (List<FacesMessage>) sessionMap.remove(sessionToken);
 
-        if (messages == null)
-        {
+        if (messages == null) {
             return 0;
         }
 
         int restoredCount = messages.size();
-        for (Object element : messages)
-        {
+        for (Object element : messages) {
+            FacesMessage message = (FacesMessage) element;
+            System.out.println("RESTORING: " + message.getDetail());
             facesContext.addMessage(null, (FacesMessage) element);
         }
         return restoredCount;
